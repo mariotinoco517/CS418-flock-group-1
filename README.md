@@ -20,11 +20,13 @@ Repository for use for flock group 1 in CS418
 ## Secondary Datasets expected to join or compare against the primary datasets<br/>
 
 - camera.geojson: taken from [deflock.org](https://maps.deflock.org/?lat=39.8283&lng=-98.5795&zoom=4.00) containing locations of flock cameras
-- red_light_100000.csv: Taken from [Chicago Data Portal](https://data.cityofchicago.org/Transportation/Red-Light-Camera-Violations/spqx-js37/about_data), csv containing Chicago's red-light camera violation
+- red_light_100000.csv: Taken from [Chicago Data Portal](https://data.cityofchicago.org/Transportation/Red-Light-Camera-Violations/spqx-js37/about_data), csv containing Chicago's red-light camera violations
+- speed_violations_150000.csv: Taken from [Chicago Data Portal](https://data.cityofchicago.org/Transportation/Speed-Camera-Violations/hhkd-xvj4/about_data), csv contained Chicago's speed traffic violations
 
 ## Report on the basic shape of the data<br/>
 
 - camera.geojson: 140,678 rows and 14 columns. Each row is a unique flock camera in the US. Important columns will be osmID (i64), operator (str), longitude (f64), and latitude (f64)
 - chicago-ward-income.csv: 50 rows and 10 columns: Each row is a different ward in chicago. Important columns will be ward (i64) and median_household_income_est (i64)
 - Crimes\_-_2026_20260928.csv: 167,474 rows and 22 columns: Each row is a different reported crime. Important columns will be ID (i64), Date (str), and Location (str)
-- red_light_100000.csv: 100,000 rows and 10 columns: Each row is a different reported violation. Important columsn will be Intersection (str), Camera ID (int), Violation Date (str), Location (str).
+- red_light_100000.csv: 100,000 rows and 10 columns: Each row is a different reported violation. Important columns will be Address (str), Camera ID (int), Violation Date (str), and Location (str).
+- speed_violations_150000.csv: 150,000 rows and 9 columns: Each row is a different reported violation. Important columns will be Address (str), Camera ID (int), Violation Date (str), Violations (int), and Location (str).
