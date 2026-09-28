@@ -15,11 +15,11 @@ Repository for use for flock group 1 in CS418
 
 - chicago-city.json: Taken from class github, useful for mapping out data
 - chicago-ward-incsome.csv: Taken from class github, useful for context on population
-- Crimes\_-_2026_20260928.csv: Taken from the Chicago Data Portal, csv containing all crime reports from 2001 to present
+- Crimes\_-_2026_20260928.csv: Taken from the [Chicago Data Portal](https://data.cityofchicago.org/Public-Safety/Crimes-2026/f6bk-yv3r/about_data), csv containing all crime reports from 2001 to present
 
 ## Secondary Datasets expected to join or compare against the primary datasets<br/>
 
-- camera.geojson: taken from deflock.org containing locations of flock cameras
+- camera.geojson: taken from [deflock.org](https://maps.deflock.org/?lat=39.8283&lng=-98.5795&zoom=4.00) containing locations of flock cameras
 
 ## Report on the basic shape of the data<br/>
 
