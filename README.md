@@ -5,6 +5,7 @@ Repository for use for flock group 1 in CS418
 ## Groups Members <br/>
 
 - Mario Tinoco
+- Haseeb Mohajir
 
 ## Group's research questions(pulled from question memo)<br/>
 
