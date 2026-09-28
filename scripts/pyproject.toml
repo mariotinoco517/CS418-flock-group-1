@@ -1,0 +1,21 @@
+[project]
+name = "scripts"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "mariotinoco517", email = "161102981+mariotinoco517@users.noreply.github.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "jupyterlab>=4.6.4",
+    "matplotlib>=3.11.2",
+    "polars>=1.44.2",
+]
+
+[project.scripts]
+scripts = "scripts:main"
+
+[build-system]
+requires = ["uv_build>=0.12.14,<0.13.0"]
+build-backend = "uv_build"

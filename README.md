@@ -2,6 +2,10 @@
 
 Repository for use for flock group 1 in CS418
 
+## Groups Members <br/>
+
+- Mario Tinoco
+
 ## Group's research questions(pulled from question memo)<br/>
 
 - Does the presence of flock cameras in areas lower traffic violations?
@@ -10,7 +14,7 @@ Repository for use for flock group 1 in CS418
 ## Primary Datasets that seem to address the question(s)<br/>
 
 - chicago-city.json: Taken from class github, useful for mapping out data
-- chicago-war-incsome.csv: Taken from class github, useful for context on population
+- chicago-ward-incsome.csv: Taken from class github, useful for context on population
 - Crimes\_-_2026_20260928.csv: Taken from the Chicago Data Portal, csv containing all crime reports from 2001 to present
 
 ## Secondary Datasets expected to join or compare against the primary datasets<br/>
@@ -19,4 +23,6 @@ Repository for use for flock group 1 in CS418
 
 ## Report on the basic shape of the data<br/>
 
-- // # of rows&cols, what one row represents, the important columns and their types, time span and geography covered, etc.
+- camera.geojson: 140,678 rows and 14 columns. Each row is a unique flock camera in the US. Important columns will be osmID (i64), operator (str), longitude (f64), and latitude (f64)
+- chicago-ward-income.csv: 50 rows and 10 columns: Each row is a different ward in chicago. Important columns will be ward (i64) and median_household_income_est (i64)
+- Crimes\_-_2026_20260928.csv: 167,474 rows and 22 columns: Each row is a different reported crime. Important columns will be ID (i64), Date (str), and Location (str)
