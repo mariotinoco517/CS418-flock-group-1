@@ -21,8 +21,8 @@ Repository for use for flock group 1 in CS418
 ## Secondary Datasets expected to join or compare against the primary datasets<br/>
 
 - camera.geojson: taken from [deflock.org](https://maps.deflock.org/?lat=39.8283&lng=-98.5795&zoom=4.00) containing locations of flock cameras
-- red_light_100000.csv: Taken from [Chicago Data Portal](https://data.cityofchicago.org/Transportation/Red-Light-Camera-Violations/spqx-js37/about_data), csv containing Chicago's red-light camera violations
-- speed_violations_150000.csv: Taken from [Chicago Data Portal](https://data.cityofchicago.org/Transportation/Speed-Camera-Violations/hhkd-xvj4/about_data), csv contained Chicago's speed traffic violations
+- red_light_100000.csv: Taken from [Chicago Data Portal](https://data.cityofchicago.org/Transportation/Red-Light-Camera-Violations/spqx-js37/about_data), csv containing Chicago's red-light camera violations from 2014 to present
+- speed_violations_150000.csv: Taken from [Chicago Data Portal](https://data.cityofchicago.org/Transportation/Speed-Camera-Violations/hhkd-xvj4/about_data), csv contained Chicago's speed traffic violations from 2014 to present
 
 ## Report on the basic shape of the data<br/>
 
