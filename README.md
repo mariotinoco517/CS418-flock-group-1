@@ -7,6 +7,7 @@ Repository for use for flock group 1 in CS418
 - Mario Tinoco
 - Haseeb Mohajir
 - Joe Wu
+- Neel Pastakia
 
 ## Group's research questions(pulled from question memo)<br/>
 
