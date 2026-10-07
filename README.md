@@ -9,6 +9,8 @@ Repository for use for flock group 1 in CS418
 - Joe Wu
 - Neel Pastakia
 
+# Data Acquisition<br/>
+
 ## Group's research questions(pulled from question memo)<br/>
 
 - Does the presence of flock cameras in areas lower traffic violations?
@@ -33,3 +35,13 @@ Repository for use for flock group 1 in CS418
 - Crimes\_-_2026_20260928.csv: 167,474 rows and 22 columns: Each row is a different reported crime. Important columns will be ID (i64), Date (str), and Location (str)
 - red_light_100000.csv: 100,000 rows and 10 columns: Each row is a different reported violation. Important columns will be Address (str), Camera ID (int), Violation Date (str), and Location (str).
 - speed_violations_150000.csv: 150,000 rows and 9 columns: Each row is a different reported violation. Important columns will be Address (str), Camera ID (int), Violation Date (str), Violations (int), and Location (str).
+
+# Exploratory Analysis<br/>
+## Revised Research Questions
+-
+## Dataset Basics<br/>
+-
+## Anomalies<br/>
+-
+## Significant Findings<br/>
+-
