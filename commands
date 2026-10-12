@@ -1,0 +1,6 @@
+conda create -n projectenv python-3.13 anaconda: creates anaconda environment for the project
+conda init: initializes environment
+activate projectenv: activates conda environment (might need to add "conda" at beginning if on mac)
+pip install polars
+
+jupyter notebook: opens jupyter in browser
