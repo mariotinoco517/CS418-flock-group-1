@@ -47,11 +47,11 @@ Does the presence of Flock cameras impact the amount of crimes, or more specific
   
 ## Anomalies<br/>
 Regarding red-light and speed-cameras, and flock relations...
-There is a sudden and abrupt rise in speed violations in the year of 2021. This is very strange because prior to this year, the number of speed violations on average was a lot lower, fluctucation between 20 to 50 mean violations per record. But, after the year of 2021, the number rose sharply from between 40 to 100 mean veiolations per record.
+- There is a sudden and abrupt rise in speed violations in the year of 2021. This is very strange because prior to this year, the number of speed violations on average was a lot lower, fluctucation between 20 to 50 mean violations per record. But, after the year of 2021, the number rose sharply from between 40 to 100 mean veiolations per record.
 
 ## Significant Findings<br/>
 Regarding red-light and speed-cameras, and flock relations...
-Phase One Findings:
-Speed-camera violations are higher and more variable month to month than red-light-camera violations. Speed-camera monthly means range from about 12 in February 2021 to 99 in July 2021; red-light-camera means are comparatively steadier, ranging from about 3.8 to 9.5.
-Phase Two Findings:
-Red-light-camera sites within 500 m of a mapped Flock camera have a higher median site-level mean number of violations per exported record (about 5.14) than sites more than 2 km away (about 4.26). For speed cameras, the pattern is reversed: sites within 500 m have a lower median (about 24.37) than sites more than 2 km away (about 42.91). One thing to note is that these comparisons describe proximity patterns; they do not count violations recorded by Flock cameras or show that Flock cameras caused the differences.
+- Phase One Findings:
+  - Speed-camera violations are higher and more variable month to month than red-light-camera violations. Speed-camera monthly means range from about 12 in February 2021 to 99 in July 2021; red-light-camera means are comparatively steadier, ranging from about 3.8 to 9.5.
+- Phase Two Findings:
+   - Red-light-camera sites within 500 m of a mapped Flock camera have a higher median site-level mean number of violations per exported record (about 5.14) than sites more than 2 km away (about 4.26). For speed cameras, the pattern is reversed: sites within 500 m have a lower median (about 24.37) than sites more than 2 km away (about 42.91). One thing to note is that these comparisons describe proximity patterns; they do not count violations recorded by Flock cameras or show that Flock cameras caused the differences.
