@@ -37,8 +37,8 @@ Repository for use for flock group 1 in CS418
 - speed_violations_150000.csv: 150,000 rows and 9 columns: Each row is a different reported violation. Important columns will be Address (str), Camera ID (int), Violation Date (str), Violations (int), and Location (str).
 
 # Exploratory Analysis<br/>
-## Revised Research Questions
--
+## Revised Research Question(s)
+Does the presence of Flock cameras impact the amount of crimes, or more specifically, traffic violations, in Chicago?
 ## Dataset Basics<br/>
 -
 ## Anomalies<br/>
