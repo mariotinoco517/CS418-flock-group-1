@@ -38,7 +38,8 @@ Repository for use for flock group 1 in CS418
 
 # Exploratory Analysis<br/>
 ## Revised Research Question(s)
-Does the presence of Flock cameras impact the amount of crimes, or more specifically, traffic violations, in Chicago?
+- Does the presence of Flock cameras impact the amount of crimes, or more specifically, traffic violations, in Chicago?<br/>
+- Does the local density of Flock cameras in specific Chicago police districts correspond to a drop in vehicle crimes?
 ## Dataset Basics<br/>
 1. Regarding red-light and speed-cameras, and flock relations...
    - The exploration of the datasets is broken down in two phases.
