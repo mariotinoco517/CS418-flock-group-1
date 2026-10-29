@@ -133,7 +133,7 @@ Sources: `red_light_100000.csv` and `speed_violations_150000.csv`
 | Name | Data type | Units | What it means | Range or allowed values | Missing values | Source / derivation |
 |---|---|---|---|---|---|---|
 | `VIOLATION DATE` | String date | Local calendar date | Date the traffic-camera violation record was issued. | `MM/DD/YYYY`. | Invalid or blank date parses as null. | Raw field in each traffic CSV. |
-| `VIOLATIONS` | String in CSV; parsed number in analysis | Violations per exported record | Number of violations recorded for the row. Commas are removed before numeric parsing. | Nonnegative count | Invalid or blank values parse as null; such rows are dropped from monthly means and excluded from site summaries. | Raw field in each traffic CSV; parsed in `TrafficViolationFlockRelation.ipynb`. |
+| `VIOLATIONS` | String in CSV; parsed number in analysis | Violations per exported record | Number of violations recorded for the row. Commas are removed before numeric parsing. | Nonnegative count | Invalid or blank values parse as null. | Raw field in each traffic CSV; parsed in `TrafficViolationFlockRelation.ipynb`. |
 | `CAMERA ID` | String | Camera identifier | Traffic-camera identifier used to group records into sites. | Identifier as recorded. | Blank becomes null.| Raw field in each traffic CSV. |
 | `LATITUDE` | Number | Decimal degrees | Latitude of the traffic-camera record. | -90 to 90 | Blank or invalid value parses as null. | Raw field in each traffic CSV. |
 | `LONGITUDE` | Number | Decimal degrees | Longitude of the traffic-camera record. | -180 to 180 | Blank or invalid value parses as null. | Raw field in each traffic CSV. |
