@@ -146,9 +146,9 @@ Sources: `Clean_Monthly_Crimes.csv`, `Clean_Monthly_Red_Light.csv`, and
 | Name | Data type | Units | What it means | Range or allowed values | Missing values | Source / derivation |
 |---|---|---|---|---|---|---|
 | `Timestamp` | Date | Month, represented by first day | Month to which each monthly measure applies. | `YYYY-MM-DD`; month starts from 2014-07-01 through 2026-08-01. | N/A | Raw column in each `Clean_Monthly_*.csv`; parsed by `pandas.to_datetime` in `TotalVehicleCrimeRelationToSpeedingAndRedLights.ipynb`. |
-| `Total_Vehicle_Crimes` | Integer | Crime records per month | Precomputed monthly total of vehicle crimes. | Nonnegative integer count. | Missing value after the outer join is filled with 0. | Raw `Clean_Monthly_Crimes.csv`.. |
-| `Crime_Norm` | Number | Unitless normalized score | Precomputed normalized crime measure used to compare time patterns. | Numeric score. | Missing value after the outer join is filled with 0. | Raw `Clean_Monthly_Crimes.csv`. |
-| `Red_Light_Tickets` | Integer | Tickets per month | Precomputed monthly red-light-camera ticket total. | Nonnegative integer count. | Missing value after the outer join is filled with 0. | Raw `Clean_Monthly_Red_Light.csv`. |
-| `Red_Light_Norm` | Number | Unitless normalized score | Precomputed normalized red-light measure used to compare time patterns. | Numeric score. | Missing value after the outer join is filled with 0. | Raw `Clean_Monthly_Red_Light.csv`. |
-| `Speed_Tickets` | Integer | Tickets per month | Precomputed monthly speed-camera ticket total. | Nonnegative integer count. | Missing value after the outer join is filled with 0. | Raw `Clean_Monthly_Speed.csv`. |
-| `Speed_Norm` | Number | Unitless normalized score | Precomputed normalized speed measure used to compare time patterns. | Numeric score. | Missing value after the outer join is filled with 0. | Raw `Clean_Monthly_Speed.csv`. |
+| `Total_Vehicle_Crimes` | Integer | Crime records per month | Precomputed monthly total of vehicle crimes. | Nonnegative integer count. | N/A | Raw `Clean_Monthly_Crimes.csv`.. |
+| `Crime_Norm` | Number | Unitless normalized score | Precomputed normalized crime measure used to compare time patterns. | Numeric score. | N/A | Raw `Clean_Monthly_Crimes.csv`. |
+| `Red_Light_Tickets` | Integer | Tickets per month | Precomputed monthly red-light-camera ticket total. | Nonnegative integer count. | N/A | Raw `Clean_Monthly_Red_Light.csv`. |
+| `Red_Light_Norm` | Number | Unitless normalized score | Precomputed normalized red-light measure used to compare time patterns. | Numeric score. | N/A | Raw `Clean_Monthly_Red_Light.csv`. |
+| `Speed_Tickets` | Integer | Tickets per month | Precomputed monthly speed-camera ticket total. | Nonnegative integer count. | N/A | Raw `Clean_Monthly_Speed.csv`. |
+| `Speed_Norm` | Number | Unitless normalized score | Precomputed normalized speed measure used to compare time patterns. | Numeric score. | N/A | Raw `Clean_Monthly_Speed.csv`. |
