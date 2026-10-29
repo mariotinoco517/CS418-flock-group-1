@@ -54,8 +54,8 @@ Source: `Crimes_-_2026_20260928.csv`
 
 | Name | Data type | Units | What it means | Range or allowed values | Missing values | Source / derivation |
 |---|---|---|---|---|---|---|
-| `ID` | Integer | Record identifier | Unique identifier assigned to a crime record. | Positive integer; unique in the export. | Blank becomes null | Raw `Crimes_-_2026_20260928.csv`. |
-| `Case Number` | String | Case identifier | Chicago Police Department case number. | Identifier as recorded; not a measurement. | Blank becomes null. | Raw `Crimes_-_2026_20260928.csv`. |
+| `ID` | Integer | Record identifier | Unique identifier assigned to a crime record. | Positive integer | Blank becomes null | Raw `Crimes_-_2026_20260928.csv`. |
+| `Case Number` | String | Case identifier | Chicago Police Department case number. | Identifier as recorded | Blank becomes null. | Raw `Crimes_-_2026_20260928.csv`. |
 | `Date` | String timestamp | Local date and time | Date and time associated with the reported incident. | Timestamp as recorded in the source export. | Blank or unparsable value becomes null. | Raw `Crimes_-_2026_20260928.csv`. |
 | `Block` | String | Street address text | Block-level location of the incident; exact address is masked. | Text as recorded; may include a block number and street name. | Blank becomes null. | Raw `Crimes_-_2026_20260928.csv`. |
 | `IUCR` | String | Crime code | Illinois Uniform Crime Reporting code for the offense. | Code as recorded by CPD. | Blank becomes null. | Raw `Crimes_-_2026_20260928.csv`. |
@@ -66,15 +66,15 @@ Source: `Crimes_-_2026_20260928.csv`
 | `Domestic` | Boolean | Indicator | Whether the incident was identified as domestic-related. | `true` or `false`. | Blank becomes null. | Raw `Crimes_-_2026_20260928.csv`. |
 | `Beat` | Integer | CPD beat identifier | Police beat associated with the incident. | CPD beat code as recorded. | Blank becomes null. | Raw `Crimes_-_2026_20260928.csv`. |
 | `District` | Integer | CPD district identifier | Police district associated with the incident. | Chicago Police district code as recorded. | Blank becomes null. | Raw `Crimes_-_2026_20260928.csv`. |
-| `Ward` | Integer | Ward identifier | Chicago ward associated with the incident. | Ward 1–50 for Chicago wards; other or null values are excluded from the ward-count analysis. | Blank becomes null. | Raw `Crimes_-_2026_20260928.csv`. Also used to form `crime_count` in `chicago_ward_income (1).ipynb`. |
+| `Ward` | Integer | Ward identifier | Chicago ward associated with the incident. | Ward 1–50 for Chicago wards | Blank becomes null. | Raw `Crimes_-_2026_20260928.csv`. Also used to form `crime_count` in `chicago_ward_income (1).ipynb`. |
 | `Community Area` | Integer | Community-area identifier | Chicago community area associated with the incident. | Community area 1–77. | Blank becomes null. | Raw `Crimes_-_2026_20260928.csv`. |
 | `FBI Code` | String | Crime code | FBI offense classification code. | Code as recorded by CPD. | Blank becomes null. | Raw `Crimes_-_2026_20260928.csv`. |
-| `X Coordinate` | Integer | State Plane coordinate (feet) | Projected east-west coordinate supplied for the incident. | Chicago-area coordinate in the source projection; not longitude. | Blank becomes null. | Raw `Crimes_-_2026_20260928.csv`. |
-| `Y Coordinate` | Integer | State Plane coordinate (feet) | Projected north-south coordinate supplied for the incident. | Chicago-area coordinate in the source projection; not latitude. | Blank becomes null. | Raw `Crimes_-_2026_20260928.csv`. |
+| `X Coordinate` | Integer | State Plane coordinate (feet) | Projected east-west coordinate supplied for the incident. | Chicago-area coordinate in the source projection | Blank becomes null. | Raw `Crimes_-_2026_20260928.csv`. |
+| `Y Coordinate` | Integer | State Plane coordinate (feet) | Projected north-south coordinate supplied for the incident. | Chicago-area coordinate in the source projection | Blank becomes null. | Raw `Crimes_-_2026_20260928.csv`. |
 | `Year` | Integer | Calendar year | Year associated with the incident record. | Year in the source export, from 2001 through the export period. | Blank becomes null. | Raw `Crimes_-_2026_20260928.csv`. |
 | `Updated On` | String timestamp | Local date and time | Date and time the source record was last updated. | Timestamp as recorded in the source export. | Blank or unparsable value becomes null. | Raw `Crimes_-_2026_20260928.csv`. |
-| `Latitude` | Number | Decimal degrees | Geographic latitude supplied for the incident. | Chicago-area latitude; approximately 41–43 degrees when located. | Blank becomes null. | Raw `Crimes_-_2026_20260928.csv`. |
-| `Longitude` | Number | Decimal degrees | Geographic longitude supplied for the incident. | Chicago-area longitude; approximately -89 to -87 degrees when located. | Blank becomes null. | Raw `Crimes_-_2026_20260928.csv`. |
+| `Latitude` | Number | Decimal degrees | Geographic latitude supplied for the incident. | Chicago-area latitude | Blank becomes null. | Raw `Crimes_-_2026_20260928.csv`. |
+| `Longitude` | Number | Decimal degrees | Geographic longitude supplied for the incident. | Chicago-area longitude | Blank becomes null. | Raw `Crimes_-_2026_20260928.csv`. |
 | `Location` | String | Coordinate pair text | Source-formatted location, typically a latitude/longitude pair. | Coordinate text as supplied by the portal. | Blank becomes null. | Raw `Crimes_-_2026_20260928.csv`. |
 
 ## Chicago Ward Income Dataset
@@ -90,7 +90,7 @@ Source: `chicago-ward-income.csv`
 | `households_50k_to_75k` | Integer | Households | Estimated households in the $50,000–$74,999 income bracket. | Nonnegative count. | N/A | Raw `chicago-ward-income.csv`. |
 | `households_75k_to_125k` | Integer | Households | Estimated households in the $75,000–$124,999 income bracket. | Nonnegative count. | N/A | Raw `chicago-ward-income.csv`. |
 | `households_125k_plus` | Integer | Households | Estimated households with income of $125,000 or more. | Nonnegative count. | N/A | Raw `chicago-ward-income.csv`. |
-| `households_total` | Integer | Households | Estimated total households in the ward. | Nonnegative count; equals the sum of the five income brackets in the supplied data. | N/A | Raw `chicago-ward-income.csv`. |
+| `households_total` | Integer | Households | Estimated total households in the ward. | Nonnegative count | N/A | Raw `chicago-ward-income.csv`. |
 | `pct_households_125k_plus` | Number | Percent (%) | Percentage of households in the $125,000-or-more bracket. | 0–100. | N/A | Raw `chicago-ward-income.csv`. |
 | `median_household_income_est` | Integer | US dollars per year | Estimated median household income for the ward. | Nonnegative dollar estimate. | N/A | Raw `chicago-ward-income.csv`. Also used in the income-versus-crime plot. |
 
@@ -102,10 +102,10 @@ Source: `cameras.geojson`
 |---|---|---|---|---|---|---|
 | `osmId` | Integer | OpenStreetMap identifier | OpenStreetMap object identifier for the mapped camera/location. | Positive integer. | Missing property or JSON `null` becomes null. | `properties.osmId` in `cameras.geojson`. |
 | `osmType` | String | Object type | OpenStreetMap object type. | `node`, `way`, or `relation` as present in the file. | Missing property or JSON `null` becomes null. | `properties.osmType` in `cameras.geojson`. |
-| `brand` | String | Brand label | Camera brand recorded in the map. | Text as recorded; the Flock subset requires exact value `Flock Safety`. | Missing property or JSON `null` becomes null. | `properties.brand` in `cameras.geojson`. |
+| `brand` | String | Brand label | Camera brand recorded in the map. | Text as recorded | Missing property or JSON `null` becomes null. | `properties.brand` in `cameras.geojson`. |
 | `operator` | String | Operator label | Organization listed as operating the camera/location. | Text as recorded. | Missing property or JSON `null` becomes null. | `properties.operator` in `cameras.geojson`. |
 | `ref` | String | Reference text | Reference or route identifier attached to the mapped feature. | Text as recorded. | Missing property or JSON `null` becomes null. | `properties.ref` in `cameras.geojson`. |
-| `startDate` | String | Date/year text | Start date or year associated with the mapped feature. | Text as recorded; formatting may vary. | Missing property or JSON `null` becomes null. | `properties.startDate` in `cameras.geojson`. |
+| `startDate` | String | Date/year text | Start date or year associated with the mapped feature. | Text as recorded. | Missing property or JSON `null` becomes null. | `properties.startDate` in `cameras.geojson`. |
 | `osmTimestamp` | String timestamp | UTC date and time | Last-edit timestamp for the OpenStreetMap object. | ISO 8601 timestamp as recorded. | Missing property or JSON `null` becomes null. | `properties.osmTimestamp` in `cameras.geojson`. |
 | `osmVersion` | Integer | Version number | OpenStreetMap object version. | Positive integer. | Missing property or JSON `null` becomes null. | `properties.osmVersion` in `cameras.geojson`. |
 | `direction` | Number | Degrees clockwise from north | Direction associated with the mapped camera. | Bearing from 0 inclusive to 360 exclusive. | Missing property or JSON `null` becomes null. | `properties.direction` in `cameras.geojson`. |
@@ -114,8 +114,8 @@ Source: `cameras.geojson`
 | `mountType` | String | Mount type | Mounting type recorded for the camera. | Text as recorded, for example `pole`. | Missing property or JSON `null` becomes null. | `properties.mountType` in `cameras.geojson`. |
 | `surveillanceZone` | String | Zone category | Type of area or activity monitored, when supplied. | Text as recorded, for example `traffic`. | Missing property or JSON `null` becomes null. | `properties.surveillanceZone` in `cameras.geojson`. |
 | `geometry.coordinates` | List of numbers | Decimal degrees | GeoJSON Point coordinates, ordered as longitude then latitude. | Longitude -180 to 180; latitude -90 to 90. | Missing or null geometry is not usable for the distance calculation. | Raw `geometry.coordinates` in `cameras.geojson`. |
-| `longitude` | Number | Decimal degrees | Longitude extracted from element 0 of the GeoJSON Point coordinates. | -180 to 180; Chicago Flock subset uses -88.0 to -87.5. | Null if geometry or coordinates are missing; rows without coordinates cannot be used. | Created in `TrafficViolationFlockRelation.ipynb` from `geometry.coordinates[0]`. |
-| `latitude` | Number | Decimal degrees | Latitude extracted from element 1 of the GeoJSON Point coordinates. | -90 to 90; Chicago Flock subset uses 41.5 to 42.1. | Null if geometry or coordinates are missing; rows without coordinates cannot be used. | Created in `TrafficViolationFlockRelation.ipynb` from `geometry.coordinates[1]`. |
+| `longitude` | Number | Decimal degrees | Longitude extracted from element 0 of the GeoJSON Point coordinates. | -180 to 180 | Null if geometry or coordinates are missing. | Created in `TrafficViolationFlockRelation.ipynb` from `geometry.coordinates[0]`. |
+| `latitude` | Number | Decimal degrees | Latitude extracted from element 1 of the GeoJSON Point coordinates. | -90 to 90 | Null if geometry or coordinates are missing. | Created in `TrafficViolationFlockRelation.ipynb` from `geometry.coordinates[1]`. |
 
 ## Chicago City Dataset
 
@@ -132,11 +132,11 @@ Sources: `red_light_100000.csv` and `speed_violations_150000.csv`
 
 | Name | Data type | Units | What it means | Range or allowed values | Missing values | Source / derivation |
 |---|---|---|---|---|---|---|
-| `VIOLATION DATE` | String date | Local calendar date | Date the traffic-camera violation record was issued. | `MM/DD/YYYY`. | Invalid or blank date parses as null; such rows are dropped from the monthly-average calculation. | Raw field in each traffic CSV. |
+| `VIOLATION DATE` | String date | Local calendar date | Date the traffic-camera violation record was issued. | `MM/DD/YYYY`. | Invalid or blank date parses as null. | Raw field in each traffic CSV. |
 | `VIOLATIONS` | String in CSV; parsed number in analysis | Violations per exported record | Number of violations recorded for the row. Commas are removed before numeric parsing. | Nonnegative count | Invalid or blank values parse as null; such rows are dropped from monthly means and excluded from site summaries. | Raw field in each traffic CSV; parsed in `TrafficViolationFlockRelation.ipynb`. |
-| `CAMERA ID` | String | Camera identifier | Traffic-camera identifier used to group records into sites. | Identifier as recorded; speed IDs may contain letters. | Blank becomes null; null ID records cannot form a camera group. | Raw field in each traffic CSV. |
-| `LATITUDE` | Number | Decimal degrees | Latitude of the traffic-camera record. | -90 to 90; Chicago analysis retains 41.5 to 42.1. | Blank or invalid value parses as null; rows without both coordinates are excluded from site analysis. | Raw field in each traffic CSV. |
-| `LONGITUDE` | Number | Decimal degrees | Longitude of the traffic-camera record. | -180 to 180; Chicago analysis retains -88.0 to -87.5. | Blank or invalid value parses as null; rows without both coordinates are excluded from site analysis. | Raw field in each traffic CSV. |
+| `CAMERA ID` | String | Camera identifier | Traffic-camera identifier used to group records into sites. | Identifier as recorded. | Blank becomes null.| Raw field in each traffic CSV. |
+| `LATITUDE` | Number | Decimal degrees | Latitude of the traffic-camera record. | -90 to 90 | Blank or invalid value parses as null. | Raw field in each traffic CSV. |
+| `LONGITUDE` | Number | Decimal degrees | Longitude of the traffic-camera record. | -180 to 180 | Blank or invalid value parses as null. | Raw field in each traffic CSV. |
 
 ## Precomputed Monthly Comparison Datasets
 
