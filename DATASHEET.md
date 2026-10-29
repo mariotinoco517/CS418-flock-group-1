@@ -123,7 +123,242 @@ Sources: `Clean_Monthly_Crimes.csv`, `Clean_Monthly_Red_Light.csv`, and
 | `Red_Light_Tickets`    | Integer   | Tickets per month               | Precomputed monthly red-light-camera ticket total.                      | Nonnegative integer count.                                     | N/A            | Raw `Clean_Monthly_Red_Light.csv`.                                                                                                   |
 | `Red_Light_Norm`       | Number    | Unitless normalized score       | Precomputed normalized red-light measure used to compare time patterns. | Numeric score.                                                 | N/A            | Raw `Clean_Monthly_Red_Light.csv`.                                                                                                   |
 | `Speed_Tickets`        | Integer   | Tickets per month               | Precomputed monthly speed-camera ticket total.                          | Nonnegative integer count.                                     | N/A            | Raw `Clean_Monthly_Speed.csv`.                                                                                                       |
-| `Speed_Norm`           | Number    | Unitless normalized score       | Precomputed normalized speed measure used to compare time patterns.     | Numeric score.                                                 | N/A            | Raw `Clean_Monthly_Speed.csv`.                                                                                                       |
+| `Speed_Norm`           | Number    | Unitless normalized score       | Precomputed normalized speed measure used to compare time patterns.     | Numeric score.                                                 | N/A            | Raw `Clean_Monthly_Speed.csv`.                                                       
+# Share the Recipe
+
+### Ward Income and Crime Data Preparation
+
+**Code reference:** `notebooks/chicago_ward_income.ipynb`
+
+1. Loaded `chicago-ward-income.csv` and `Crimes_-_2026_20260928.csv` using Polars.
+2. Read the crime CSV using `infer_schema_length=10000` and `ignore_errors=True`.
+3. Filtered crime records to include only valid Chicago wards (1–50).
+4. Grouped crime records by `Ward` and counted the number of crimes in each ward, creating `crime_count`.
+5. Performed an inner join using `ward` from the income dataset and `Ward` from the crime dataset.
+6. Selected `ward`, `median_household_income_est`, and `crime_count` for analysis.
+7. Created a scatter plot and calculated the Pearson correlation coefficient.
+
+**Join results:**
+
+- Matched wards: 50
+- Unmatched income wards: 0
+- Unmatched crime wards: 0
+- Final dataframe: 50 rows and 3 columns
+
+All 50 wards matched successfully. No ward-level records were lost during the join. Crime records with invalid ward numbers were excluded before the join.
+
+### Crime Dataset Preparation
+
+**Code reference:** `notebooks/crimes.ipynb`
+
+1. Loaded `Crimes_-_2026_20260928.csv` using Polars.
+2. Examined the dataset's shape, column types, summary statistics, and missing values.
+3. Divided the 22 columns into smaller groups for easier inspection.
+4. Identified 304 records with missing geographic coordinates.
+5. Counted reported crimes by `Primary Type` to examine the distribution of crime categories.
+6. Counted reported crimes by `Ward` to compare crime counts across Chicago wards.
+7. Created bar charts showing the number of reported crimes by crime type and ward.
+
+**Data preparation results:**
+
+- Original dataset: 167,474 rows and 22 columns.
+- Records with missing geographic coordinates: 304.
+- No joins were performed in this notebook.
+- The notebook identifies missing-location records for removal, but does not currently contain code that removes them.
+- The original crime records were used to create the distribution charts.
+  
+### Camera Dataset Preparation
+
+**Code reference:** `notebooks/camera.ipynb`
+
+1. Loaded `cameras.geojson` using Python's `json` library.
+2. Extracted the camera records from the GeoJSON `features` list.
+3. Converted the records into a Polars dataframe.
+4. Extracted longitude and latitude from the geometry coordinates and created two new columns: `longitude` and `latitude`.
+5. Expanded the nested `properties` structure into separate columns using `unnest()`.
+6. Removed the original `type` and `geometry` columns after extracting the required information.
+7. Divided the columns into smaller groups for easier inspection.
+8. Checked the dataset's shape, data types, missing values, and summary statistics.
+9. Identified missing values in columns such as `operator`, `surveillanceZone`, and `startDate`.
+10. Created bar charts showing camera counts by operator and surveillance zone.
+
+**Data preparation results:**
+
+- Original dataset: 140,678 camera records.
+- Extracted dataframe: 140,678 rows and 14 columns.
+- No geographic filtering was performed in this notebook.
+- Missing operator values were excluded when calculating operator frequencies.
+- Missing surveillance-zone values were excluded when calculating surveillance-zone frequencies.
+- The notebook discusses excluding `startDate` from future analysis, but does not actually remove it from the main dataframe.
+- No joins were performed in this notebook.
+
+### Chicago City Boundary Dataset Preparation
+
+**Code reference:** `notebooks/chicago_city.ipynb`
+
+1. Loaded `chicago-city.geojson` using Python's `json` library.
+2. Extracted the geographic features from the GeoJSON `features` list.
+3. Created a Polars dataframe containing `feature_id`, `geometry_type`, `properties_count`, and `has_geometry`.
+4. Checked for missing geometry, duplicate features, invalid coordinates, and unclosed polygon rings.
+5. Extracted polygon rings and their longitude and latitude coordinates.
+6. Identified 156 consecutive duplicate coordinate points but kept them unchanged to preserve the original boundary.
+7. Created a geographic plot showing Chicago's city boundary.
+
+**Data preparation results:**
+
+- Original GeoJSON: 1 geographic feature.
+- Profiling dataframe: 1 row and 4 columns.
+- Total coordinate entries: 12,731 across 5 polygon rings.
+- Missing geometries: 0.
+- No geographic features or coordinate points were removed.
+- No joins were performed in this notebook.
+
+### Red-Light and Speed-Camera Violations Preparation
+
+**Code reference:** `notebooks/eda.ipynb`
+(Red-light and speed-camera relationship analysis)
+
+1. Loaded `red_light_100000.csv` and `speed_violations_150000.csv` using Polars.
+2. Read the `VIOLATIONS` column as a string to handle values containing commas.
+3. Converted `VIOLATION DATE` into a date using the format `MM/DD/YYYY`.
+4. Extracted the year and month into a new column named `month`, formatted as `YYYY-MM`.
+5. Removed commas from `VIOLATIONS` and converted the values to numbers.
+6. Dropped records with missing or invalid values in the selected date and violation columns.
+7. Grouped each dataset by `month`.
+8. Calculated the average number of violations per record for each month, creating `mean_violations`.
+9. Sorted the monthly results chronologically.
+10. Created a line chart comparing monthly averages for red-light and speed-camera violations.
+
+**Data preparation results:**
+
+- Original red-light dataset: 100,000 rows.
+- Original speed-camera dataset: 150,000 rows.
+- Both datasets were aggregated separately by month.
+- No dataframe join was performed for this particular comparison.
+- The resulting monthly averages were plotted together.
+
+### Monthly Vehicle Crime and Traffic Violations Preparation
+
+**Code reference:** `notebooks/TotalVehicleCrimeRelationToSpeedingAndRedLights.ipynb`
+
+1. Loaded three precomputed CSV files using pandas:
+   - `Clean_Monthly_Crimes.csv`
+   - `Clean_Monthly_Red_Light.csv`
+   - `Clean_Monthly_Speed.csv`
+2. Each dataset contains monthly observations identified by a common column named `Timestamp`.
+3. Performed an outer join between the monthly crime and red-light datasets using `Timestamp`.
+4. Performed a second outer join between the combined dataframe and the monthly speed-violation dataset using `Timestamp`.
+5. Replaced missing values in the combined dataframe with zero using `fillna(0)`.
+6. Converted the `Timestamp` column to datetime using `pd.to_datetime()`.
+7. Created separate time-series plots showing monthly vehicle crimes, red-light tickets, and speed-camera tickets.
+8. Created a combined visualization comparing the three normalized monthly trends.
+
+**Data Preparation Results:**
+
+- Original monthly crime dataset: 146 rows.
+- Original monthly red-light dataset: 146 rows.
+- Original monthly speed dataset: 146 rows.
+- Final combined dataframe: 146 rows.
+
+**Join 1 — Monthly Crimes and Red-Light Violations**
+
+- Join type: Outer join.
+- Join key: `Timestamp`.
+- Matched months: 146.
+- Unmatched crime months: 0.
+- Unmatched red-light months: 0.
+
+**Join 2 — Combined Data and Speed Violations**
+
+- Join type: Outer join.
+- Join key: `Timestamp`.
+- Matched months: 146.
+- Unmatched combined months: 0.
+- Unmatched speed months: 0.
+
+All three datasets contain the same 146 monthly timestamps, so no monthly observations were lost during the joins.
+
+**Reproducibility Note:**
+
+The monthly comparison analysis uses three precomputed datasets:
+`Clean_Monthly_Crimes.csv`, `Clean_Monthly_Red_Light.csv`,
+and `Clean_Monthly_Speed.csv`.
+
+These datasets contain 146 monthly observations each, with matching
+timestamps from July 2014 through August 2026.
+
+The notebook documents how these datasets are joined, how missing
+values are handled, and how the resulting data is visualized.
+
+However, the repository does not currently contain an identified
+script or notebook showing how the three cleaned monthly datasets
+were generated from their original sources.
+
+Therefore, the monthly comparison can be reproduced using the
+precomputed CSV files, but the complete upstream cleaning process
+cannot currently be independently reproduced from the documented code.
+
+This is a limitation of the current data preparation pipeline.
+
+### Flock Camera Proximity and Traffic Violations Preparation
+
+**Code reference:** `notebooks/TrafficViolationFlockRelation.ipynb`
+
+1. Loaded `cameras.geojson` using Python's json library and converted its features into a Polars dataframe.
+2. Extracted longitude and latitude from the GeoJSON geometry coordinates.
+3. Filtered the camera records to include only those labeled `Flock Safety` and located within the approximate Chicago-area coordinate bounds:
+   - Latitude: 41.5 to 42.1
+   - Longitude: -88.0 to -87.5
+4. Loaded `red_light_100000.csv` and `speed_violations_150000.csv` using Polars.
+5. Converted the traffic-camera latitude, longitude, and violation counts into numeric values.
+6. Removed traffic records with missing or invalid coordinates, coordinates outside the selected geographic bounds, or missing violation counts.
+7. Grouped the remaining traffic records by `CAMERA ID`.
+8. Calculated the mean latitude, longitude, and number of violations per exported record for each traffic-camera site.
+9. Used the Haversine distance formula to calculate the distance from each traffic-camera site to its nearest mapped Flock Safety camera.
+10. Classified traffic-camera sites into three distance categories:
+    - Within 500 meters
+    - Between 500 meters and 2 kilometers
+    - More than 2 kilometers
+11. Grouped the traffic-camera sites by proximity category and calculated the median site-level mean violations.
+12. Created comparison plots for red-light and speed-camera violations by proximity to mapped Flock cameras.
+
+**Data Preparation Results:**
+
+- Original red-light dataset: 100,000 records.
+- Red-light records with coordinates: 94,383.
+- Red-light records included in the final site groups: 90,383.
+- Final red-light camera sites: 358.
+
+- Original speed-camera dataset: 150,000 records.
+- Speed-camera records with coordinates: 150,000.
+- Speed-camera records included in the final site groups: 150,000.
+- Final speed-camera sites: 231.
+
+**Geographic Matching:**
+
+The traffic-camera datasets and Flock camera dataset do not share a common camera identifier.
+
+Therefore, no traditional dataframe join was performed. Instead, traffic-camera sites were compared with mapped Flock Safety locations using geographic distance.
+
+Each traffic-camera site was assigned the distance to its nearest mapped Flock Safety camera.
+
+**Red-Light Camera Sites by Proximity:**
+
+- Within 500 m: 50 sites.
+- Between 500 m and 2 km: 196 sites.
+- More than 2 km: 112 sites.
+
+**Speed-Camera Sites by Proximity:**
+
+- Within 500 m: 34 sites.
+- Between 500 m and 2 km: 143 sites.
+- More than 2 km: 54 sites.
+
+**Limitations:**
+
+The geographic filtering uses a rectangular coordinate range rather than the exact Chicago city boundary.
+
+The analysis compares traffic-camera violations with proximity to mapped Flock Safety cameras. It does not measure violations recorded by Flock cameras or establish that Flock cameras caused changes in traffic violations.
 
 # Access and Reuse
 
@@ -153,7 +388,7 @@ Sources: `Clean_Monthly_Crimes.csv`, `Clean_Monthly_Red_Light.csv`, and
   - [Link to database](https://data.cityofchicago.org/Transportation/Speed-Camera-Violations/hhkd-xvj4/about_data)
   - Downloaded September 2025 in .csv format. Initial dataset is open to the public and so is out processed data
 
-  # Considering People
+ ## Considering People
 
   Throughout the project we used datasets that indirectly capture people. The datasets that describe crimes/infractions (Crimes\_-_2026_20260928.csv, red_light_100000, speed_violations_150000.csv)
   indirectly capture the actions of individuals. While no personal data is represented in these datasets they still capture the actions of people. And as Arvind Narayanan showed in [How To Break Anonymity of the Netflix Prize Dataset](https://arxiv.org/abs/cs/0610105) these actions can be traced back to individuals given effort. Because of this these datasets can indirectly misrepresent individuals who have commited a crime/infraction.
