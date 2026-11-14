@@ -1,3 +1,19 @@
+## Main Findings (Narrative Analysis)
+
+- (Finding one, in one sentence.)
+- (Finding two, in one sentence.)
+- (...)
+
+### (Finding one)
+
+One paragraph explaining the finding: the evidence and the check.
+
+[Figure title that states the point & figures/finding-one.png]
+
+### (Finding two)
+
+(...)
+
 # CS418-flock-group-1
 
 Repository for use for flock group 1 in CS418
