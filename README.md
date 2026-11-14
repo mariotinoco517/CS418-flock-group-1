@@ -3,12 +3,15 @@
 - (Finding one, in one sentence.)
 - (Finding two, in one sentence.)
 - (...)
+(lists the findings as one-sentence bullets in a reasonable order)
 
 ### (Finding one)
 
 One paragraph explaining the finding: the evidence and the check.
 
 [Figure title that states the point & figures/finding-one.png]
+
+(at least one plausible alternative explanation)
 
 ### (Finding two)
 
