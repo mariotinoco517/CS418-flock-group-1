@@ -3,6 +3,7 @@
 - (Finding one, in one sentence.)
 - (Finding two, in one sentence.)
 - (...)
+<br>
 (lists the findings as one-sentence bullets in a reasonable order)
 
 ### (Finding one)
