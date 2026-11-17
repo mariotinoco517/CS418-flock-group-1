@@ -1,16 +1,16 @@
 ## Main Findings (Narrative Analysis)
 
-- (Finding one, in one sentence.)
+- We found no distinct reduction in traffic violations since the implementation of surveillance cameras.
 - (Finding two, in one sentence.)
 - (...)
-<br>
-(lists the findings as one-sentence bullets in a reasonable order)
+  <br>
+  (lists the findings as one-sentence bullets in a reasonable order)
 
 ### (Finding one)
 
-One paragraph explaining the finding: the evidence and the check.
+According to [this fox exclusive](https://www.fox32chicago.com/news/chicago-police-flock-searches-audit-logs) audit logs showed that "CPD officers ran more than 23,000 searches through Flock from May through July 2026". Thus we examined traffic violations pre and post May 2026 for any evidence if Flock cameras made a difference. After analysing speed violations and red light cameras we came to the conclusion that the usage of Flock cameras had minimal impact on the frequency of violations.
 
-[Figure title that states the point & figures/finding-one.png]
+![alt text](image-12.png)
 
 (at least one plausible alternative explanation)
 
