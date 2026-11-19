@@ -10,9 +10,9 @@
 
 According to [this fox exclusive](https://www.fox32chicago.com/news/chicago-police-flock-searches-audit-logs) audit logs showed that "CPD officers ran more than 23,000 searches through Flock from May through July 2026". Thus we examined traffic violations pre and post May 2026 for any evidence if Flock cameras made a difference. After analysing speed violations and red light cameras we came to the conclusion that the usage of Flock cameras had minimal impact on the frequency of violations.
 
-![alt text](image-12.png)
+Note that there is no official date for as to when Chicago law enforcment started using Flock cameras and their data to assist in law enforment. The dividing line was placed at May 2026 based on [the fox exclusive](https://www.fox32chicago.com/news/chicago-police-flock-searches-audit-logs). However, positioning our divide at the start of 2024 (when OPSA started to pay for access) we also see minimal impact on the frequency of violations.
 
-(at least one plausible alternative explanation)
+![alt text](image-14.png)
 
 ### (Finding two)
 
